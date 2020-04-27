@@ -23,4 +23,4 @@ class Settings:
         self.bg_color = self.whisper_grey
 
         # Ship settings.
-        self.ship_speed = 10
+        self.ship_speed = 25
