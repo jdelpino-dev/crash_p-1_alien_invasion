@@ -14,8 +14,9 @@ class Settings:
     def __init__(self):
         """Initialize the game's settings."""
         # Color variables
-        self.whisper_grey = (230, 230, 230)  # Whisper (Grey) #E6E6E6
-        self.d_blue_sky = (0, 215, 255)  # Deep Sky Blue #00D7FF
+        self.whisper_grey = (230, 230, 230)  # Whisper Grey #E6E6E6
+        self.deep_blue_sky = (0, 215, 255)  # Deep Sky Blue #00D7FF
+        self.dark_gray = (60, 60, 60)  # Dark Grey (Eclipse) #3C3C3C
 
         # Screen settings
         self.full_screen = True
@@ -24,4 +25,10 @@ class Settings:
         self.bg_color = self.whisper_grey
 
         # Ship settings.
-        self.ship_speed = 25
+        self.ship_speed = 10
+
+        # Bullet settings
+        self.bullet_speed = 1.0
+        self.bullet_width = 3
+        self.bullet_height = 15
+        self.bullet_color = self.dark_grey

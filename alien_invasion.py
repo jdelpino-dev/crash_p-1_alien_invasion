@@ -35,7 +35,7 @@ class AlienInvasion:
 
         # Stablish the window title.
         pygame.display.set_caption("Alien Invasion")
-        # Defines the ship.
+        # Creates the ship instance.
         self.ship = Ship(self)
 
     def run_game(self):
