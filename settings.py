@@ -18,6 +18,7 @@ class Settings:
         self.d_blue_sky = (0, 215, 255)  # Deep Sky Blue #00D7FF
 
         # Screen settings
+        self.full_screen = True
         self.screen_width = 1200
         self.screen_height = 800
         self.bg_color = self.whisper_grey
