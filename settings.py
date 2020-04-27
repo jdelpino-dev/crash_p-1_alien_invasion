@@ -13,7 +13,11 @@ class Settings:
 
     def __init__(self):
         """Initialize the game's settings."""
+        # Color variables
+        self.whisper_grey = (230, 230, 230)  # Whisper (Grey) #E6E6E6
+        self.d_blue_sky = (0, 215, 255)  # Deep Sky Blue #00D7FF
+
         # Screen settings
         self.screen_width = 1200
         self.screen_height = 800
-        self.bg_color = (230, 230, 230)
+        self.bg_color = self.whisper_grey
