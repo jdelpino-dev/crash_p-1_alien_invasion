@@ -3,14 +3,16 @@
 # Code by José Delpino
 # PROYECT # 1: Alien Invasion
 # Chapter # 1: A Ship that Fires Bullets
+
+# MAIN FILE: alien_invasion.py
 """An alien invasion game created using pygame.
 
 In this first part I set up Pygame, and then 'create a rocket ship
-that moves right and left and fires bullets in response to player input'.
-"""
+that moves right and left and fires bullets in response to player input'."""
 
 import sys
 import pygame
+from settings import Settings
 
 
 class AlienInvasion:
@@ -19,10 +21,11 @@ class AlienInvasion:
         def __init__(self):
             """Initialize the game, and create game resources."""
             pygame.init()
-            self.screen = pygame.display.set_mode((1200, 800))
+            self.Settings = Settings()
+            self.screen = pygame.display.set_mode(
+                (Settings.screen_width, Settings.screen_height))
             pygame.display.set_caption("Alien Invasion")
             # Set the background color.
-            self.bg_color = (230, 230, 230)
 
         def run_game(self):
             """Start the main loop for the game."""
@@ -33,7 +36,7 @@ class AlienInvasion:
                         sys.exit()
 
                 # Redraw the screen during each pass through the loop.
-                self.screen.fill(self.bg_color)
+                self.screen.fill(Settings.bg_color)
 
                 # Make the most recently drawn screen visible.
                 pygame.display.flip()
