@@ -19,9 +19,9 @@ class Settings:
         self.dark_grey = (60, 60, 60)  # Dark Grey (Eclipse) #3C3C3C
 
         # Screen settings
-        self.full_screen = True
-        self.screen_width = 1200
-        self.screen_height = 800
+        self.full_screen = False
+        self.screen_width = 600
+        self.screen_height = 400
         self.bg_color = self.whisper_grey
 
         # Ship settings.
