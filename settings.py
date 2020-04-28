@@ -20,8 +20,8 @@ class Settings:
 
         # Screen settings
         self.full_screen = False
-        self.screen_width = 600
-        self.screen_height = 400
+        self.screen_width = 840
+        self.screen_height = 525
         self.bg_color = self.whisper_grey
 
         # Ship settings.
@@ -32,3 +32,4 @@ class Settings:
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = self.dark_grey
+        self.bullets_allowed = 3

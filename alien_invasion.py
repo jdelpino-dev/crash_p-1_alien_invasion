@@ -46,9 +46,7 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()
-            self.bullets.update()  # The group automatically calls update()
-            # for each sprite/bullet in the group.
-            self._get_rid_old_bullets()
+            self._update_bullets()
             self._update_screen()
 
     def _check_events(self):
@@ -89,15 +87,21 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
-    def _get_rid_old_bullets(self):
+    def _update_bullets(self):
+        self.bullets.update()  # The group automatically calls update()
+        # for each sprite/bullet in the group.
         # Get rid of bullets that have disappeared.
-        for bullet in self.bullets.copy():
-            if bullet.rect.bottom <= 0:
-                self.bullets.remove(bullet)
-            print(len(self.bullets))
+        for bullet in self.bullets.copy():  # «When you use a for
+            if bullet.rect.bottom <= 0:  # loop with a list (or a group in
+                self.bullets.remove(bullet)  # Pygame), Python expects that
+            # the list will stay the same length as long as the loop is
+            # running. Because we can’t remove items from a list or group
+            # within a for loop, we have to loop over a copy of the group».
+        print(len(self.bullets))
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
