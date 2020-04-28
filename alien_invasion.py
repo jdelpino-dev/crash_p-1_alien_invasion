@@ -101,7 +101,7 @@ class AlienInvasion:
             # the list will stay the same length as long as the loop is
             # running. Because we can’t remove items from a list or group
             # within a for loop, we have to loop over a copy of the group».
-        print(len(self.bullets))
+        # print(len(self.bullets))  # Scaffolding... Erase soon...
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
