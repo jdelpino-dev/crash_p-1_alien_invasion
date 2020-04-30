@@ -5,10 +5,9 @@
 # Chapter # 12: A Ship that Fires Bullets
 
 # MAIN CLASS AND FILE
-"""An alien invasion game created using pygame.
-
-In this first part I set up Pygame, and then 'create a rocket ship
-that moves right and left and fires bullets in response to player input'."""
+"""An alien invasion game created using pygame. The game is created using the
+code provided by the book, but doing significant modifications when
+it is needed."""
 
 import sys
 import pygame

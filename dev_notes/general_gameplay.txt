@@ -1,4 +1,4 @@
-PROYECT #1: ALIEN INVASION
+PROJECT #1: ALIEN INVASION
 
 "In Alien Invasion, the player controls a rocket ship that appears at the
 bottom center of the screen. The player can move the ship right and left
