@@ -3,6 +3,7 @@
 # Code by Eric Matthes and José Delpino
 # PROJECT # 1: Alien Invasion
 # Chapter # 12: A Ship that Fires Bullets
+# Chapter # 13: Aliens!
 
 # MAIN CLASS AND FILE
 """An alien invasion game created using pygame. The game is created using the
@@ -14,6 +15,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien
 
 
 class AlienInvasion:
@@ -37,8 +39,14 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
         # Creates the ship instance.
         self.ship = Ship(self)
-        # Store bullets in a Group –a pygame sprite group–
+        # Creates the bullet stash where we'll store them
+        # –a pygame sprite group–
         self.bullets = pygame.sprite.Group()
+        # Creates the alien fleet container whre we'll store
+        # the aliens –a pygame sprite group
+        self.Aliens = pygame.sprite.Group()
+        # Creates the first Alien Instance and store it in the fleet container
+        self.alien = Alien(self)
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -106,6 +114,7 @@ class AlienInvasion:
         """Update images on the screen, and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
+        self.alien.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
 

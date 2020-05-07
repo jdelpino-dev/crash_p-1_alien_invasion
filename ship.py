@@ -3,6 +3,7 @@
 # Code by Eric Matthes and José Delpino
 # PROJECT # 1: Alien Invasion
 # Chapter # 12: A Ship that Fires Bullets
+# Chapter # 13: Aliens!
 
 # SHIP CLASS
 """Ship module that contains the class Ship."""
