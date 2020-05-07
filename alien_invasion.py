@@ -44,17 +44,15 @@ class AlienInvasion:
         self.bullets = pygame.sprite.Group()
         # Creates the alien fleet container whre we'll store
         # the aliens –a pygame sprite group
-        self.Aliens = pygame.sprite.Group()
-        # Creates the first Alien Instance and store it in the fleet container
-        self.alien = Alien(self)
+        self.aliens = pygame.sprite.Group()
+        # Creates the alien fleet with all its instances:
+        self._create_fleet()
 
-    def run_game(self):
-        """Start the main loop for the game."""
-        while True:
-            self._check_events()
-            self.ship.update()
-            self._update_bullets()
-            self._update_screen()
+    def _create_fleet(self):
+        """Create the fleet of aliens."""
+        # Make an alien:
+        alien = Alien(self)
+        self.aliens.add(alien)
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
@@ -114,11 +112,19 @@ class AlienInvasion:
         """Update images on the screen, and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
-        self.alien.blitme()
+        self.aliens.draw(self.screen)
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
 
         pygame.display.flip()
+
+    def run_game(self):
+        """Start the main loop for the game."""
+        while True:
+            self._check_events()
+            self.ship.update()
+            self._update_bullets()
+            self._update_screen()
 
 
 if __name__ == '__main__':
