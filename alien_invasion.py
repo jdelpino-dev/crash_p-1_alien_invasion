@@ -169,7 +169,6 @@ class AlienInvasion:
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
         self.aliens.draw(self.screen)
-        
         self._update_aliens()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
@@ -183,6 +182,7 @@ class AlienInvasion:
             self.ship.update()
             self._update_bullets()
             self._update_screen()
+
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
