@@ -50,9 +50,23 @@ class AlienInvasion:
 
     def _create_fleet(self):
         """Create the fleet of aliens."""
-        # Make an alien:
+        # Create an alien and find the number of aliens in a row.
+        # Spacing between each alien is equal to the third of one alien width.
         alien = Alien(self)
+        alien_width = alien.rect.width
+        alien_marging = alien_width/3
+        alien_space = alien_width + alien_marging
+        available_space_x = self.settings.screen_width - 5*alien_width/3
+        number_aliens_x = int(available_space_x // alien_space)
+        # Create the first row of aliens.
+        # Place the first alien we created in a row
         self.aliens.add(alien)
+        for alien_number in range(number_aliens_x-1):
+            # Create an alien and place it in the row.
+            alien = Alien(self)
+            alien.x += float(alien_space*alien_number)
+            alien.rect.x = alien.x
+            self.aliens.add(alien)
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
