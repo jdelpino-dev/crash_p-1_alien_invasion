@@ -144,7 +144,7 @@ class AlienInvasion:
             # within a for loop, we have to loop over a copy of the group».
         # print(len(self.bullets))  # Scaffolding... Erase soon...
         collisions = pygame.sprite.groupcollide(
-            self.bullets, self.aliens, True, True)
+            self.bullets, self.aliens, False, True)
         del collisions
 
     def _update_aliens(self):
