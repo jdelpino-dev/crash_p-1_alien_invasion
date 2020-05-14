@@ -48,26 +48,47 @@ class AlienInvasion:
         # Creates the alien fleet with all its instances:
         self._create_fleet()
 
-    def _create_alien(self, alien_number, alien_space):
-        """Create an alien and place it in the row."""
-        alien = Alien(self)
-        alien.x += float(alien_space*alien_number)
-        alien.rect.x = alien.x
-        self.aliens.add(alien)
-
-    def _create_fleet(self):
-        """Create the fleet of aliens."""
+    def _calculate_fleet_variables(self):
         # Create an alien and find the number of aliens in a row.
         # Spacing between each alien is equal to the third of one alien width.
         alien = Alien(self)
         alien_width = alien.rect.width
-        alien_marging = alien_width/3
-        alien_space = alien_width + alien_marging
+        alien_marging_x = alien_width/3
+        alien_space_x = alien_width + alien_marging_x
         available_space_x = self.settings.screen_width - 5*alien_width/3
-        number_aliens_x = int(available_space_x // alien_space)
-        # Create the first row of aliens.
-        for alien_number in range(0, number_aliens_x):
-            self._create_alien(alien_number, alien_space)
+        number_aliens_x = int(available_space_x // alien_space_x)
+        # Calculate the number of rows:
+        alien_height = alien.rect.height
+        alien_marging_y = alien_height/3
+        alien_space_y = alien_height + alien_marging_y
+        available_space_y = (self.settings.screen_height - 14*alien_height/3
+                             - self.ship.rect.height)
+        number_aliens_y = int(available_space_y // alien_space_y)
+        # Create all the rows of aliens.
+        return (number_aliens_x, alien_space_x,
+                number_aliens_y, alien_space_y)
+
+    def _create_alien(self, alien_number_x, alien_space_x,
+                      alien_number_y, alien_space_y):
+        """Create an alien and place it in the row."""
+        alien = Alien(self)
+        alien.x += float(alien_space_x * alien_number_x)
+        alien.rect.x = alien.x
+        alien.y += float(alien_space_y * alien_number_y)
+        alien.rect.y = alien.y
+        self.aliens.add(alien)
+
+    def _create_fleet(self):
+        """Create the fleet of aliens."""
+        # Calculate the fleet spatial variables:
+        fleet_space = self._calculate_fleet_variables()
+        number_aliens_x, alien_space_x = fleet_space[0], fleet_space[1]
+        number_aliens_y, alien_space_y = fleet_space[2], fleet_space[3]
+        # Create the fleet:
+        for alien_number_y in range(0, number_aliens_y):
+            for alien_number_x in range(0, number_aliens_x):
+                self._create_alien(alien_number_x, alien_space_x,
+                                   alien_number_y, alien_space_y)
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
