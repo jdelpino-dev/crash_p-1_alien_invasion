@@ -144,12 +144,33 @@ class AlienInvasion:
             # within a for loop, we have to loop over a copy of the group».
         # print(len(self.bullets))  # Scaffolding... Erase soon...
 
+    def _update_aliens(self):
+        """Check if the fleet is at an edge,
+        then update the positions of all aliens in the fleet."""
+        self._check_fleet_edges()
+        self.aliens.update()
+
+    def _check_fleet_edges(self):
+        """Respond appropriately if any aliens have reached an edge."""
+        for alien in self.aliens.sprites():
+            if alien.check_sides():
+                self._change_fleet_direction()
+                break
+
+    def _change_fleet_direction(self):
+        """Drop the entire fleet and change the fleet's direction."""
+        for alien in self.aliens.sprites():
+            alien.y += self.settings.fleet_drop_speed
+            alien.rect.y = alien.y
+        self.settings.fleet_direction = self.settings.fleet_direction * -1
+
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
         self.aliens.draw(self.screen)
-        self.aliens.update()
+        
+        self._update_aliens()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
 
@@ -162,7 +183,6 @@ class AlienInvasion:
             self.ship.update()
             self._update_bullets()
             self._update_screen()
-
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
