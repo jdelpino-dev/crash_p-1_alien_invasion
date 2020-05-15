@@ -168,10 +168,10 @@ class AlienInvasion:
     def _check_fleet_edges(self):
         """Respond appropriately if any aliens have reached an edge."""
         for alien in self.aliens.sprites():
-            if alien.check_bottom():
+            if alien.hit_bottom():
                 self._alien_collision()
                 break
-            if alien.check_sides():
+            if alien.hit_sides():
                 self._change_fleet_direction()
                 break
 

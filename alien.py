@@ -33,12 +33,12 @@ class Alien(Sprite):
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
 
-    def check_sides(self):
+    def hit_sides(self):
         """Return True if any alien is at the side edges of screen."""
         if self.rect.right >= self.screen_rect.right or self.rect.left <= 0:
             return True
 
-    def check_bottom(self):
+    def hit_bottom(self):
         """Return True if any alien is at the bottom of screen."""
         if self.rect.bottom >= self.screen_rect.bottom:
             return True
