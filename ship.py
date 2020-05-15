@@ -81,6 +81,6 @@ class Ship:
 
     def reset_position(self):
         """Reset a ship to its original position"""
-        self.ship.rect.midbottom = self.ship.screen_rect.midbottom
-        self.ship.x = float(self.ship.rect.x)
-        self.ship.y = float(self.ship.rect.y)
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
