@@ -136,7 +136,8 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
-        if len(self.bullets) < self.settings.bullets_allowed:
+        if (self.stats.game_active and
+           len(self.bullets) < self.settings.bullets_allowed):
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
 
@@ -159,11 +160,12 @@ class AlienInvasion:
     def _update_aliens(self):
         """Check if the fleet is at an edge,
         then update the positions of all aliens in the fleet."""
-        self._check_fleet_edges()
-        self.aliens.update()
-        # Look for alien-ship collisions.
-        if spritecollideany(self.ship, self.aliens):
-            self._alien_collision()
+        if self.stats.game_active:
+            self._check_fleet_edges()
+            self.aliens.update()
+            # Look for alien-ship collisions.
+            if spritecollideany(self.ship, self.aliens):
+                self._alien_collision()
 
     def _check_fleet_edges(self):
         """Respond appropriately if any aliens have reached an edge."""
@@ -209,7 +211,6 @@ class AlienInvasion:
         self._update_aliens()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
-
         pygame.display.flip()
 
     def run_game(self):
