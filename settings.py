@@ -26,19 +26,19 @@ class Settings:
         self.bg_color = self.whisper_grey
 
         # Ship settings.
-        self.ship_speed = 8
+        self.ship_speed = 5.0
         self.ship_limit = 3
 
         # Bullet settings
-        self.bullet_speed = 8.0
-        self.bullet_width = 2
-        self.bullet_height = 15
+        self.bullet_speed = 10.0
+        self.bullet_width = 4
+        self.bullet_height = 8
         self.bullet_color = self.dark_grey
-        self.bullets_allowed = 10
+        self.bullets_allowed = 4
 
         # Alien settings
-        self.alien_speed = 10.0
-        self.fleet_drop_speed = 10.0
+        self.alien_speed = 8.0
+        self.fleet_drop_speed = 5.0
         # fleet_direction of 1 represents right; -1 represents left.
         self.fleet_direction = 1
 
