@@ -193,10 +193,13 @@ class AlienInvasion:
 
     def _alien_collision(self):
         """Respond to the ship being hit by an alien."""
-        # Decrement ships_left.
-        self.stats.ships_left -= 1
-        # Redeploy the game if there is no ships left.
-        self._redeploy_elements()
+        if self.stats.ships_left > 0:
+            # Decrement ships_left.
+            self.stats.ships_left -= 1
+            # Redeploy the game.
+            self._redeploy_elements()
+        else:
+            self.stats.game_active = False
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
@@ -213,8 +216,9 @@ class AlienInvasion:
         """Start the main loop for the game."""
         while True:
             self._check_events()
-            self.ship.update()
-            self._update_bullets()
+            if self.stats.game_active:
+                self.ship.update()
+                self._update_bullets()
             self._update_screen()
 
 
