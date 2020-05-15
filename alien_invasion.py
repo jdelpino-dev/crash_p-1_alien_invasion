@@ -12,6 +12,7 @@ it is needed."""
 
 import sys
 import pygame
+from pygame.sprite import groupcollide
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
@@ -143,12 +144,10 @@ class AlienInvasion:
             # running. Because we can’t remove items from a list or group
             # within a for loop, we have to loop over a copy of the group».
         # print(len(self.bullets))  # Scaffolding... Erase soon...
-        collisions = pygame.sprite.groupcollide(
-            self.bullets, self.aliens, False, True)
+        collisions = groupcollide(self.bullets, self.aliens, False, True)
         del collisions
         if not self.aliens:
-            self.bullets.empty()
-            self._create_fleet()
+            self._redeploy_elements()
 
     def _update_aliens(self):
         """Check if the fleet is at an edge,
@@ -169,6 +168,13 @@ class AlienInvasion:
             alien.y += self.settings.fleet_drop_speed
             alien.rect.y = alien.y
         self.settings.fleet_direction = self.settings.fleet_direction * -1
+
+    def _redeploy_elements(self):
+        """Repopulate the fleet, delete the bullets, and reposition the ship
+        to avoid a starting collision"""
+        self.ship.reset_position()
+        self.bullets.empty()
+        self._create_fleet()
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
