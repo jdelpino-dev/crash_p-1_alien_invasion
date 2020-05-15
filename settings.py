@@ -20,13 +20,14 @@ class Settings:
         self.dark_grey = (60, 60, 60)  # Dark Grey (Eclipse) #3C3C3C
 
         # Screen settings
-        self.full_screen = True
+        self.full_screen = False
         self.screen_width = 840
         self.screen_height = 525
         self.bg_color = self.whisper_grey
 
         # Ship settings.
         self.ship_speed = 8
+        self.ship_limit = 3
 
         # Bullet settings
         self.bullet_speed = 8.0
@@ -36,7 +37,10 @@ class Settings:
         self.bullets_allowed = 10
 
         # Alien settings
-        self.alien_speed = 2.5
+        self.alien_speed = 10.0
         self.fleet_drop_speed = 10.0
         # fleet_direction of 1 represents right; -1 represents left.
         self.fleet_direction = 1
+
+        # Other game play settings
+        self.redeployment_pause = 0.5

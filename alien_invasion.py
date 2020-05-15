@@ -11,12 +11,14 @@ code provided by the book, but doing significant modifications when
 it is needed."""
 
 import sys
+from time import sleep
 import pygame
-from pygame.sprite import groupcollide
+from pygame.sprite import groupcollide, spritecollideany
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from game_stats import GameStats
 
 
 class AlienInvasion:
@@ -38,6 +40,11 @@ class AlienInvasion:
 
         # Stablish the window title.
         pygame.display.set_caption("Alien Invasion")
+        # Creates the game stats instance. The self arguments that are passed
+        # to the stat and ship objects refer to the current instance of
+        # AlienInvasion. This is the parameter that gives these objects access
+        # to the game’s resources, such as the screen object.
+        self.stats = GameStats(self)
         # Creates the ship instance.
         self.ship = Ship(self)
         # Creates the bullet stash where we'll store them
@@ -154,10 +161,16 @@ class AlienInvasion:
         then update the positions of all aliens in the fleet."""
         self._check_fleet_edges()
         self.aliens.update()
+        # Look for alien-ship collisions.
+        if spritecollideany(self.ship, self.aliens):
+            self._alien_collision()
 
     def _check_fleet_edges(self):
         """Respond appropriately if any aliens have reached an edge."""
         for alien in self.aliens.sprites():
+            if alien.check_bottom():
+                self._alien_collision()
+                break
             if alien.check_sides():
                 self._change_fleet_direction()
                 break
@@ -171,10 +184,19 @@ class AlienInvasion:
 
     def _redeploy_elements(self):
         """Repopulate the fleet, delete the bullets, and reposition the ship
-        to avoid a starting collision"""
-        self.ship.reset_position()
+        to avoid a starting collision. It also creates a short game pause"""
+        self.ship.center()
         self.bullets.empty()
+        self.aliens.empty()
         self._create_fleet()
+        sleep(self.settings.redeployment_pause)
+
+    def _alien_collision(self):
+        """Respond to the ship being hit by an alien."""
+        # Decrement ships_left.
+        self.stats.ships_left -= 1
+        # Redeploy the game if there is no ships left.
+        self._redeploy_elements()
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""

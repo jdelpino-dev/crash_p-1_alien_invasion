@@ -79,7 +79,7 @@ class Ship:
         """Draw the ship at its current location."""
         self.screen.blit(self.image, self.rect)
 
-    def reset_position(self):
+    def center(self):
         """Reset a ship to its original position"""
         self.rect.midbottom = self.screen_rect.midbottom
         self.x = float(self.rect.x)
