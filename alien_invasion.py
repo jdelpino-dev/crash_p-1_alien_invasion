@@ -172,7 +172,7 @@ class AlienInvasion:
             # running. Because we can’t remove items from a list or group
             # within a for loop, we have to loop over a copy of the group».
         # print(len(self.bullets))  # Scaffolding... Erase soon...
-        collisions = groupcollide(self.bullets, self.aliens, False, True)
+        collisions = groupcollide(self.bullets, self.aliens, True, True)
         del collisions
         if not self.aliens:
             self._redeploy_elements()
