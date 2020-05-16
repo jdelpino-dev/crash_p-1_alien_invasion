@@ -43,9 +43,10 @@ class AlienInvasion:
                 (self.settings.screen_width, self.settings.screen_height))
             # Stores the screen rect:
             self.screen_rect = self.screen.get_rect()
-
         # Stablish the window title.
         pygame.display.set_caption("Alien Invasion")
+        # Make the Play button.
+        self.play_button = Button(self, "Play")
         # Creates the game stats instance. The self arguments that are passed
         # to the stat and ship objects refer to the current instance of
         # AlienInvasion. This is the parameter that gives these objects access
@@ -61,8 +62,6 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
         # Creates the alien fleet with all its instances:
         self._create_fleet()
-        # Make the Play button.
-        self.play_button = Button(self, "Play")
 
     def _calculate_fleet_variables(self):
         # Create an alien and find the number of aliens in a row.
@@ -148,7 +147,12 @@ class AlienInvasion:
     def _check_play_button(self, mouse_pos):
         """Start a new game when the player clicks Play."""
         if self.play_button.rect.collidepoint(mouse_pos):
+            # Reset the game statistics.
+            self.stats.reset_stats()
             self.stats.game_active = True
+            # Get rid of any remaining aliens and bullets, and
+            # create a new fleet and center the ship.
+            self._redeploy_elements()
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
@@ -211,7 +215,7 @@ class AlienInvasion:
 
     def _alien_collision(self):
         """Respond to the ship being hit by an alien."""
-        if self.stats.ships_left > 0:
+        if self.stats.ships_left > 1:
             # Decrement ships_left.
             self.stats.ships_left -= 1
             # Redeploy the game.
