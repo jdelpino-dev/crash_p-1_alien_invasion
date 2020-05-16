@@ -33,11 +33,17 @@ class AlienInvasion:
         # Stablish the screen resolution.
         if self.settings.full_screen:
             self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-            self.settings.screen_width = self.screen.get_rect().width
-            self.settings.screen_height = self.screen.get_rect().height
+            # Stores the screen rect:
+            self.screen_rect = self.screen.get_rect()
+            # Stablish the resolution:
+            self.settings.screen_width = self.screen_rect.width
+            self.settings.screen_height = self.screen_rect.height
         else:
             self.screen = pygame.display.set_mode(
                 (self.settings.screen_width, self.settings.screen_height))
+            # Stores the screen rect:
+            self.screen_rect = self.screen.get_rect()
+
         # Stablish the window title.
         pygame.display.set_caption("Alien Invasion")
         # Creates the game stats instance. The self arguments that are passed
