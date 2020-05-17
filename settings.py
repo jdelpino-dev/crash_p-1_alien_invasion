@@ -43,4 +43,4 @@ class Settings:
         self.fleet_direction = 1
 
         # Other game play settings
-        self.redeployment_pause = 0.5
+        self.redeployment_pause = 0.6
