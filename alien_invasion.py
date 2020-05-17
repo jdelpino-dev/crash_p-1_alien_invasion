@@ -154,6 +154,8 @@ class AlienInvasion:
             # Get rid of any remaining aliens and bullets, and
             # create a new fleet and center the ship.
             self._redeploy_elements()
+            # Hide the mouse cursor.
+            pygame.mouse.set_visible(False)
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
@@ -223,6 +225,8 @@ class AlienInvasion:
             self._redeploy_elements()
         else:
             self.stats.game_active = False
+            # Make visible the mouse cursor.
+            pygame.mouse.set_visible(True)
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
