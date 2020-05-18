@@ -152,6 +152,9 @@ class AlienInvasion:
         """Start a new game when the player clicks Play."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
+            # Reset the game settings.
+            self.settings.initialize_dynamic_settings()
+            # Start new game.
             self._start_game()
 
     def _fire_bullet(self):
@@ -175,6 +178,7 @@ class AlienInvasion:
         collisions = groupcollide(self.bullets, self.aliens, True, True)
         del collisions
         if not self.aliens:
+            self.settings.increase_speed()
             self._redeploy_elements()
 
     def _update_aliens(self):
