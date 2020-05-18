@@ -11,7 +11,7 @@ import pygame.font
 
 
 class Button:
-    """A class to create a rectagle that acts as a button."""
+    """A class to create a rectangle that acts as a button."""
 
     def __init__(self, ai_game, msg):
         """Initialize button attributes."""
