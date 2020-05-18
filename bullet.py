@@ -6,7 +6,7 @@
 # Chapter # 13: Aliens!
 
 # BULLET CLASS
-"""Ship module that contains the class Ship. Adds the ability to shoot
+"""Ship module that contains the bullet class Ship. Adds the ability to shoot
 bullets. Each bullet is represented by a small rectangle, when the player
 presses the spacebar. Bullets travel straight up the screen
 until they disappear off the top of the screen."""
