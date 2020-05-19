@@ -20,16 +20,32 @@ class Menu:
         self.screen_rect = ai_game.screen_rect
         self.settings = ai_game.settings
 
-        # Creates a list to store the buttons:
-        self.buttons = []
-
-    def _calculate_menu_space(self):
-        # height 30%
-        # wide 20 %
-        pass
-
-    def add_button(self, button):
-        pass
+        # Make the Play button:
+        self.play_button = Button(ai_game, "Play")
+        self.level_button = Button(ai_game, "Begginer")
+        self.level_button.move(0, self.play_button.height)
 
     def show_menu(self):
-        pass
+        self.play_button.draw_button()
+        self.level_button.draw_button()
+
+    def check_buttons(self, ai_game, mouse_pos):
+        """Check clicks over the buttons and call the respective actions"""
+        play_clicked = self.play_button.rect.collidepoint(mouse_pos)
+        level_clicked = self.level_button.rect.collidepoint(mouse_pos)
+        if not self.stats.game_active:
+            if level_clicked:
+                current_level = self.settings.current_level
+                category_levels = self.settings.category_levels
+                number_levels = len(category_levels)
+                self.settings.current_level = (
+                                (current_level + 1) % number_levels)
+                self.level_button._prep_msg(
+                                ai_game,
+                                category_levels[current_level])
+                self.level_button.draw_button()
+            if play_clicked:
+                # Reset the game settings.
+                self.settings.initialize_dynamic_settings()
+                # Start new game.
+                ai_game._start_game()

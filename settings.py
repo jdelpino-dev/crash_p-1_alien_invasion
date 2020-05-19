@@ -48,15 +48,29 @@ class Settings:
         # How quickly the alien point values increase
         self.score_scale = 1.5
 
+        # Level Category Difference
+        self.level_delta = 5
+        # Level Categories
+        self.category_levels = {
+            0: "Level: Beginner",
+            1: "Level: Intermetiate",
+            2: "Level: Advance",
+            3: "Level: Admiral",
+            4: "Level: Ultra",
+        }
         # The dynamic settings!
         self.initialize_dynamic_settings()
 
     def initialize_dynamic_settings(self):
         """Initialize settings that change throughout the game."""
+
+        # Current Level
+        self.current_level = 0
+
         # Agents
-        self.ship_speed = 1.5
-        self.bullet_speed = 3.0
-        self.alien_speed = 1.0
+        self.ship_speed = 1.5 * (self.speedup_scale ** self.current_level)
+        self.bullet_speed = 3.0 * (self.speedup_scale ** self.current_level)
+        self.alien_speed = 1.0 * (self.speedup_scale ** self.current_level)
 
         # Scoring
         self.alien_points = 50
