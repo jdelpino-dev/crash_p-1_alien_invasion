@@ -46,6 +46,6 @@ class Button:
 
     def move(self, x_increment, y_increment):
         self.rect.x += x_increment
-        self.msg_image_rect.x = x_increment
+        self.msg_image_rect.x = self.rect.x
         self.rect.y += y_increment
-        self.msg_image_rect.y = y_increment
+        self.msg_image_rect.y = self.rect.y

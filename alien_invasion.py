@@ -46,8 +46,6 @@ class AlienInvasion:
             self.screen_rect = self.screen.get_rect()
         # Stablish the window title.
         pygame.display.set_caption("Alien Invasion")
-        # Make the menu:
-        self.menu = Menu(self)
         # Creates the game stats instance. The self arguments that are passed
         # to the stat and ship objects refer to the current instance of
         # AlienInvasion. This is the parameter that gives these objects access
@@ -66,6 +64,8 @@ class AlienInvasion:
         # Create an instance to store game statistics,
         # and create a scoreboard to display them:
         self.sb = Scoreboard(self)
+        # Make the menu:
+        self.menu = Menu(self)
 
     def _calculate_fleet_variables(self):
         # Create an alien and find the number of aliens in a row.
@@ -114,7 +114,8 @@ class AlienInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+            elif (event.type == pygame.MOUSEBUTTONDOWN and
+                  not self.stats.game_active):
                 mouse_pos = pygame.mouse.get_pos()
                 self.menu.check_buttons(self, mouse_pos)
             elif event.type == pygame.KEYDOWN:
@@ -232,6 +233,8 @@ class AlienInvasion:
             pygame.mouse.set_visible(True)
             # Remove all events from the queue:
             pygame.event.clear()
+            # Reset game sttings:
+            self.settings.initialize_dynamic_settings()
 
     def movement_flags_down(self):
         self.ship.moving_right = False
@@ -277,9 +280,21 @@ class AlienInvasion:
         while True:
             self._check_events()
             if self.stats.game_active:
+                print(self.settings.ship_speed,
+                      self.settings.bullet_speed,
+                      self.settings.alien_speed,
+                      self.settings.alien_points, "\n")
                 self.ship.update()
                 self._update_bullets()
+                print(self.settings.ship_speed,
+                      self.settings.bullet_speed,
+                      self.settings.alien_speed,
+                      self.settings.alien_points, "\n")
             self._update_screen()
+            print(self.settings.ship_speed,
+                  self.settings.bullet_speed,
+                  self.settings.alien_speed,
+                  self.settings.alien_points, "\n")
 
 
 if __name__ == '__main__':

@@ -20,7 +20,7 @@ class Settings:
         self.dark_grey = (60, 60, 60)  # Dark Grey (Eclipse) #3C3C3C
 
         # Screen settings
-        self.full_screen = True
+        self.full_screen = False
         self.screen_width = 840
         self.screen_height = 525
         self.bg_color = self.whisper_grey
@@ -49,7 +49,8 @@ class Settings:
         self.score_scale = 1.5
 
         # Level Category Difference
-        self.level_delta = 5
+        self.category_delta = 6
+
         # Level Categories
         self.category_levels = {
             0: "Level: Beginner",
@@ -68,15 +69,23 @@ class Settings:
         self.current_level = 0
 
         # Agents
-        self.ship_speed = 1.5 * (self.speedup_scale ** self.current_level)
-        self.bullet_speed = 3.0 * (self.speedup_scale ** self.current_level)
-        self.alien_speed = 1.0 * (self.speedup_scale ** self.current_level)
-
-        # Scoring
-        self.alien_points = 50
+        self.update_agent_settings()
 
         # fleet_direction of 1 represents right; -1 represents left.
         self.fleet_direction = 1
+
+    def update_agent_settings(self):
+        """Update the dynamic settings for the ship, the bullets
+        and the scoring system."""
+        # Agents
+        game_factor = (self.speedup_scale **
+                       (self.current_level * self.category_delta))
+        self.ship_speed = 1.5 * game_factor
+        self.bullet_speed = 3.0 * game_factor
+        self.alien_speed = 1.0 * game_factor
+
+        # Scoring
+        self.alien_points = int(50 * game_factor)
 
     def increase_speed(self):
         """Increase dynamic speed settings."""

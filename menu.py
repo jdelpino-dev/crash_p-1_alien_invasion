@@ -19,6 +19,7 @@ class Menu:
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen_rect
         self.settings = ai_game.settings
+        self.stats = ai_game.stats
 
         # Make the Play button:
         self.play_button = Button(ai_game, "Play")
@@ -33,19 +34,22 @@ class Menu:
         """Check clicks over the buttons and call the respective actions"""
         play_clicked = self.play_button.rect.collidepoint(mouse_pos)
         level_clicked = self.level_button.rect.collidepoint(mouse_pos)
-        if not self.stats.game_active:
-            if level_clicked:
-                current_level = self.settings.current_level
-                category_levels = self.settings.category_levels
-                number_levels = len(category_levels)
-                self.settings.current_level = (
-                                (current_level + 1) % number_levels)
-                self.level_button._prep_msg(
-                                ai_game,
-                                category_levels[current_level])
-                self.level_button.draw_button()
-            if play_clicked:
-                # Reset the game settings.
-                self.settings.initialize_dynamic_settings()
-                # Start new game.
-                ai_game._start_game()
+        if level_clicked:
+            current_level = self.settings.current_level
+            category_levels = self.settings.category_levels
+            number_levels = len(category_levels)
+            self.settings.current_level = ((current_level + 1)
+                                            % number_levels)
+            current_level = self.settings.current_level
+            self.level_button._prep_msg(category_levels[current_level])
+            self.level_button.draw_button()
+            self.settings.update_agent_settings()
+            print(self.settings.ship_speed,
+                    self.settings.bullet_speed,
+                    self.settings.alien_speed,
+                    self.settings.alien_points, "\n")
+        if play_clicked:
+            # Reset the game settings.
+            self.settings.update_agent_settings()
+            # Start new game.
+            ai_game._start_game()
