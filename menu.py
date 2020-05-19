@@ -8,12 +8,28 @@
 # MENU CLASS
 """The main mane for Alien Invasion."""
 
+from button import Button
+
 
 class Menu:
-    """A class to store the main menu."""
+    """A class to store a menu of buttons."""
 
-    def __init__(self):
+    def __init__(self, ai_game):
         """Initialize the main menu."""
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen_rect
         self.settings = ai_game.settings
+
+        # Creates a list to store the buttons:
+        self.buttons = []
+
+    def _calculate_menu_space(self):
+        # height 30%
+        # wide 20 %
+        pass
+
+    def add_button(self, button):
+        pass
+
+    def show_menu(self):
+        pass
