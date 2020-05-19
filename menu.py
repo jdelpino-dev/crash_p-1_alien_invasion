@@ -44,10 +44,6 @@ class Menu:
             self.level_button._prep_msg(category_levels[current_level])
             self.level_button.draw_button()
             self.settings.update_agent_settings()
-            print(self.settings.ship_speed,
-                    self.settings.bullet_speed,
-                    self.settings.alien_speed,
-                    self.settings.alien_points, "\n")
         if play_clicked:
             # Reset the game settings.
             self.settings.update_agent_settings()

@@ -80,9 +80,9 @@ class Settings:
         # Agents
         game_factor = (self.speedup_scale **
                        (self.current_level * self.category_delta))
-        self.ship_speed = 1.5 * game_factor
-        self.bullet_speed = 3.0 * game_factor
-        self.alien_speed = 1.0 * game_factor
+        self.ship_speed = 3.0 * game_factor
+        self.bullet_speed = 5.0 * game_factor
+        self.alien_speed = 3.0 * game_factor
 
         # Scoring
         self.alien_points = int(50 * game_factor)

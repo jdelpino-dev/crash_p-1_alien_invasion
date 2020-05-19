@@ -273,21 +273,9 @@ class AlienInvasion:
         while True:
             self._check_events()
             if self.stats.game_active:
-                print(self.settings.ship_speed,
-                      self.settings.bullet_speed,
-                      self.settings.alien_speed,
-                      self.settings.alien_points, "\n")
                 self.ship.update()
                 self._update_bullets()
-                print(self.settings.ship_speed,
-                      self.settings.bullet_speed,
-                      self.settings.alien_speed,
-                      self.settings.alien_points, "\n")
             self._update_screen()
-            print(self.settings.ship_speed,
-                  self.settings.bullet_speed,
-                  self.settings.alien_speed,
-                  self.settings.alien_points, "\n")
 
 
 if __name__ == '__main__':
