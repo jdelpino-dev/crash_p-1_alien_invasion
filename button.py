@@ -43,3 +43,9 @@ class Button:
         """Draw blank button and then draw message."""
         self.screen.fill(self.button_color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
+
+    def move(self, x_increment, y_increment):
+        self.rect.x += x_increment
+        self.msg_image_rect.x = self.rect.x
+        self.rect.y += y_increment
+        self.msg_image_rect.y = self.rect.y

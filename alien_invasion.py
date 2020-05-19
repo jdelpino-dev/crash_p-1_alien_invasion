@@ -19,8 +19,8 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
-from button import Button
 from scoreboard import Scoreboard
+from menu import Menu
 
 
 class AlienInvasion:
@@ -46,8 +46,6 @@ class AlienInvasion:
             self.screen_rect = self.screen.get_rect()
         # Stablish the window title.
         pygame.display.set_caption("Alien Invasion")
-        # Make the Play button.
-        self.play_button = Button(self, "Play")
         # Creates the game stats instance. The self arguments that are passed
         # to the stat and ship objects refer to the current instance of
         # AlienInvasion. This is the parameter that gives these objects access
@@ -66,6 +64,8 @@ class AlienInvasion:
         # Create an instance to store game statistics,
         # and create a scoreboard to display them:
         self.sb = Scoreboard(self)
+        # Make the menu:
+        self.menu = Menu(self)
 
     def _calculate_fleet_variables(self):
         # Create an alien and find the number of aliens in a row.
@@ -80,7 +80,7 @@ class AlienInvasion:
         alien_height = alien.rect.height
         alien_marging_y = alien_height/3
         alien_space_y = alien_height + alien_marging_y
-        available_space_y = (self.settings.screen_height - 20*alien_height/3
+        available_space_y = (self.settings.screen_height - 14*alien_height/3
                              - self.ship.rect.height)
         number_aliens_y = int(available_space_y // alien_space_y)
         # Create all the rows of aliens.
@@ -114,9 +114,10 @@ class AlienInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+            elif (event.type == pygame.MOUSEBUTTONDOWN and
+                  not self.stats.game_active):
                 mouse_pos = pygame.mouse.get_pos()
-                self._check_play_button(mouse_pos)
+                self.menu.check_buttons(self, mouse_pos)
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
@@ -151,15 +152,6 @@ class AlienInvasion:
             self.ship.moving_fwd = False
         if event.key == pygame.K_DOWN:
             self.ship.moving_bck = False
-
-    def _check_play_button(self, mouse_pos):
-        """Start a new game when the player clicks Play."""
-        button_clicked = self.play_button.rect.collidepoint(mouse_pos)
-        if button_clicked and not self.stats.game_active:
-            # Reset the game settings.
-            self.settings.initialize_dynamic_settings()
-            # Start new game.
-            self._start_game()
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
@@ -241,6 +233,8 @@ class AlienInvasion:
             pygame.mouse.set_visible(True)
             # Remove all events from the queue:
             pygame.event.clear()
+            # Reset game sttings:
+            self.settings.initialize_dynamic_settings()
 
     def movement_flags_down(self):
         self.ship.moving_right = False
@@ -276,9 +270,9 @@ class AlienInvasion:
             bullet.draw_bullet()
         # Draw the scoreboard
         self.sb.show_score()
-        # Draw the play button if the game is inactive.
+        # Draw the menu if the game is inactive.
         if not self.stats.game_active:
-            self.play_button.draw_button()
+            self.menu.show_menu()
         pygame.display.flip()
 
     def run_game(self):
@@ -286,9 +280,21 @@ class AlienInvasion:
         while True:
             self._check_events()
             if self.stats.game_active:
+                print(self.settings.ship_speed,
+                      self.settings.bullet_speed,
+                      self.settings.alien_speed,
+                      self.settings.alien_points, "\n")
                 self.ship.update()
                 self._update_bullets()
+                print(self.settings.ship_speed,
+                      self.settings.bullet_speed,
+                      self.settings.alien_speed,
+                      self.settings.alien_points, "\n")
             self._update_screen()
+            print(self.settings.ship_speed,
+                  self.settings.bullet_speed,
+                  self.settings.alien_speed,
+                  self.settings.alien_points, "\n")
 
 
 if __name__ == '__main__':
