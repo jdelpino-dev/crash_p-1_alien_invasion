@@ -80,7 +80,7 @@ class AlienInvasion:
         alien_height = alien.rect.height
         alien_marging_y = alien_height/3
         alien_space_y = alien_height + alien_marging_y
-        available_space_y = (self.settings.screen_height - 20*alien_height/3
+        available_space_y = (self.settings.screen_height - 14*alien_height/3
                              - self.ship.rect.height)
         number_aliens_y = int(available_space_y // alien_space_y)
         # Create all the rows of aliens.

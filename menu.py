@@ -24,7 +24,7 @@ class Menu:
         # Make the Play button:
         self.play_button = Button(ai_game, "Play")
         self.level_button = Button(ai_game, "Begginer")
-        self.level_button.move(0, self.play_button.height)
+        self.level_button.move(0, self.play_button.height + 10)
 
     def show_menu(self):
         self.play_button.draw_button()
