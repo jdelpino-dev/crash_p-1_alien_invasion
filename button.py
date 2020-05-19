@@ -13,7 +13,7 @@ import pygame.font
 class Button:
     """A class to create a rectangle that acts as a button."""
 
-    def __init__(self, ai_game, msg):
+    def __init__(self, ai_game, msg, font_size):
         """Initialize button attributes."""
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen_rect
@@ -23,7 +23,7 @@ class Button:
         self.width, self.height = 200, 50
         self.button_color = (0, 255, 0)
         self.text_color = (255, 255, 255)
-        self.font = pygame.font.SysFont(None, 48)
+        self.font = pygame.font.SysFont(None, font_size)
 
         # Build the button's rect object and center it.
         self.rect = pygame.Rect(0, 0, self.width, self.height)
@@ -46,6 +46,6 @@ class Button:
 
     def move(self, x_increment, y_increment):
         self.rect.x += x_increment
-        self.msg_image_rect.x = self.rect.x
+        self.msg_image_rect.x += x_increment
         self.rect.y += y_increment
-        self.msg_image_rect.y = self.rect.y
+        self.msg_image_rect.y += y_increment
