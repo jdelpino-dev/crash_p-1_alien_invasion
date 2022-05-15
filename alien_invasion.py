@@ -6,8 +6,8 @@
 # Chapter # 13: Aliens!
 
 # MAIN CLASS AND FILE
-"""An alien invasion game created using pygame. The game is created with the help of
-som code provided by the book, but doing significant modifications when
+"""An alien invasion game created using pygame. The game is created with the
+help of som code provided by the book, but doing significant modifications when
 it is needed."""
 
 import sys
