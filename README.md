@@ -7,7 +7,14 @@ the original code had some bugs. With this project I learned basics of object di
 
 <img src="readme_images/p_crashcourse.png" width="150px" aling="left"/>
 
-I also decided to use Git for the first time, commiting my changes, adn synchronizing the project on my computer
-with my github! I learned a lot about Git with the help of a book.
+Here some screenshots of the game working!
+
+<img src="readme_images/playing_1" width="150px" aling="left"/>
+<img src="readme_images/playing_1" width="150px" aling="left"/>
+<img src="readme_images/playing_1" width="150px" aling="left"/>
+
+
+For this project I also used Git for the first time, commiting my changes, and synchronizing the project on my computer
+with my github! I learned a lot about Git with the help of this book:
 
 <img src="readme_images/beggining_git.png" width="150px">
