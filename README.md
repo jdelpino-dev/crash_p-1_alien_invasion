@@ -5,6 +5,7 @@ I completed the first part of an alien invasion game created using pygame. The g
 some code provided by the book, but doing significant modifications when it is needed—to make work, because
 the original code had some bugs.
 [![See the image](readme_images/p_crashcourse.png)]
+<img src="readme_images/p_crashcourse.png" width="100"/>
 
 With this project I learned basics of object directed programming with python! I also decided to use Git
 for the first time and synchronized the project on my computer with my github! I learned a lot about Git
