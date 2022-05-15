@@ -1,9 +1,12 @@
 # Alien Invasion Game Project
-## Project from "Python Crash Course" (2nd Edition), by Eric Matthes
+## Project from *Python Crash Course* (2019) (2nd Edition), by Eric Matthes
 
-I completed the first part of an alien invasion game created using pygame. The game is created with the help of
-some code provided by the book, but doing significant modifications when it is needed—to make work, because
-the original code had some bugs. With this project I learned basics of object directed programming with python!
+I completed the first part of this alien invasion game project completing the basic code the book provides.
+The game is built using Pygame, which is also a fun way to learn basics of object oriented programming.
+
+By the way, *Python crash course* is a very nice book for python begginners and it provides a wide variety of projects.
+If you want to learn hand-on and you don't know anythong about python, you can have fun completing one or more
+projects from the book.
 
 <img src="readme_images/p_crashcourse.png" width="150px" aling="left"/>
 
