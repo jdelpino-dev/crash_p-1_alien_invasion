@@ -1,2 +1,4 @@
-FIRST PHASE: I set up Pygame, and then 'create a rocket ship
-that moves right and left and fires bullets in response to player input'
+FIRST PHASE: Competed. I already set up Pygame, and then created a rocket ship
+that moves right and left and fires bullets in response to player input.
+The base code provided by the book was mostly correct but
+I had to make some tweekings. My code works prefectly.
