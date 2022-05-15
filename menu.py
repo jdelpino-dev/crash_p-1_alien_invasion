@@ -1,6 +1,6 @@
 #! /opt/anaconda3/envs/learningp37/bin/python
 # Project # 1 / From "Python Crash Course" (2nd Edition), by Eric Matthes
-# Code by Eric Matthes and José Delpino
+# Code by José Delpino, completing Eric Matthes' code from the book
 # PROJECT # 1: Alien Invasion
 # Chapter # 12: A Ship that Fires Bullets
 # Chapter # 13: Aliens!
