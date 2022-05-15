@@ -8,13 +8,13 @@ By the way, *Python crash course* is a very nice book for python begginners and 
 If you want to learn hand-on and you don't know anythong about python, you can have fun completing one or more
 projects from the book.
 
-<img src="readme_images/p_crashcourse.png" width="150px" aling="left"/>
+<img src="readme_images/p_crashcourse.png" width="200px" aling="left"/>
 
 Here some screenshots of the game working!
 
-<img src="readme_images/playing_1.png" width="150px" aling="left"/>
-<img src="readme_images/playing_2.png" width="150px" aling="left"/>
-<img src="readme_images/playing_3.png" width="150px" aling="left"/>
+<img src="readme_images/playing_1.png" width="450px" aling="left"/>
+<img src="readme_images/playing_2.png" width="450px" aling="left"/>
+<img src="readme_images/playing_3.png" width="450px" aling="left"/>
 
 
 For this project I also used Git for the first time, commiting my changes, and synchronizing the project on my computer
