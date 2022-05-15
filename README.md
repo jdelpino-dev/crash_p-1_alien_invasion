@@ -9,9 +9,9 @@ the original code had some bugs. With this project I learned basics of object di
 
 Here some screenshots of the game working!
 
-<img src="readme_images/playing_1" width="150px" aling="left"/>
-<img src="readme_images/playing_1" width="150px" aling="left"/>
-<img src="readme_images/playing_1" width="150px" aling="left"/>
+<img src="readme_images/playing_1.png" width="150px" aling="left"/>
+<img src="readme_images/playing_2.png" width="150px" aling="left"/>
+<img src="readme_images/playing_3.png" width="150px" aling="left"/>
 
 
 For this project I also used Git for the first time, commiting my changes, and synchronizing the project on my computer
