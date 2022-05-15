@@ -1,13 +1,13 @@
 #! /opt/anaconda3/envs/learningp37/bin/python
 # Project # 1 / From "Python Crash Course" (2nd Edition), by Eric Matthes
-# Code by Eric Matthes and José Delpino
+# Code by José Delpino, comleting Eric Matthes' code from the book
 # PROJECT # 1: Alien Invasion
 # Chapter # 12: A Ship that Fires Bullets
 # Chapter # 13: Aliens!
 
 # MAIN CLASS AND FILE
-"""An alien invasion game created using pygame. The game is created using the
-code provided by the book, but doing significant modifications when
+"""An alien invasion game created using pygame. The game is created with the help of
+som code provided by the book, but doing significant modifications when
 it is needed."""
 
 import sys
