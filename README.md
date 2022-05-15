@@ -8,3 +8,4 @@ the original code had some bugs.
 With this project I learned basics of object directed programming with python! I also decided to use git
 for the first time and synchronized the project on my computer with my github! I learned a lor about Git
 with the help of 
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)

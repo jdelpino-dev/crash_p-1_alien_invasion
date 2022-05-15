@@ -1,4 +1,4 @@
-#! /opt/anaconda3/envs/learningp37/bin/python
+#! /Users/jdelpino/Anaconda/anaconda3/envs/learning37
 # Project # 1 / From "Python Crash Course" (2nd Edition), by Eric Matthes
 # Code by José Delpino, completing Eric Matthes' code from the book
 # PROJECT # 1: Alien Invasion
